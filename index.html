@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DPH - Trusted Partner in Content Moderation & Data Services</title>
-    <link rel="icon" type="" href="assets/images/favicon.ico">
+    <link rel="icon" type="" href="/assets/images/favicon.ico">
     <meta
       name="description"
       content="DPH is a specialized partner in data, content moderation, and Trust & Safety services for digital platforms and global enterprises."
@@ -54,6 +54,16 @@
         border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
       }
+      :root {
+        --header-height: 72px;
+      }
+
+      @media (max-width: 1024px) {
+        :root {
+          --header-height: 64px;
+        }
+      }
+
 
       .hero-bg {
         background-image: linear-gradient(
@@ -218,15 +228,13 @@
 <!-- ================= HERO SECTION ================= -->
 <section
   id="home"
-  class="relative hero-bg text-white"
+  class="relative hero-bg text-white flex items-center"
   style="
     margin-top: var(--header-height);
     min-height: calc(100svh - var(--header-height));
-    display: flex;
-    align-items: center;
   "
 >
-  <!-- Overlay (KHÔNG absolute full height) -->
+  <!-- Overlay -->
   <div
     class="absolute inset-0 pointer-events-none"
     style="
@@ -240,44 +248,65 @@
   ></div>
 
   <!-- Content -->
-  <div class="relative z-10 container mx-auto px-6 w-full py-20">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
+  <div
+    class="relative z-10 container mx-auto px-6 w-full
+           flex flex-col justify-center
+           py-16 lg:py-20"
+  >
+    <div
+      class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+    >
 
       <!-- LEFT -->
-      <div>
-        <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full 
-                    bg-brand-accent/10 border border-brand-accent/30 
-                    text-sm font-bold text-brand-accent mb-6">
+      <div class="text-center lg:text-left">
+        <div
+          class="inline-flex items-center gap-2 px-5 py-2 rounded-full 
+                 bg-brand-accent/10 border border-brand-accent/30 
+                 text-sm font-bold text-brand-accent mb-6
+                 mx-auto lg:mx-0"
+        >
           <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
           TRUST & SAFETY SOLUTIONS
         </div>
 
         <h1 class="text-4xl lg:text-6xl font-extrabold leading-tight mb-6">
           Trusted Partner in <br />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-sky-400">
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-sky-400"
+          >
             Content Moderation
           </span>
         </h1>
 
-        <p class="text-lg text-slate-300 mb-10 max-w-xl">
+        <p class="text-lg text-slate-300 mb-10 max-w-xl mx-auto lg:mx-0">
           DPH provides specialized data services, content moderation, and
           Trust & Safety solutions tailored for digital platforms and
           global enterprises.
         </p>
 
-        <div class="flex gap-4">
-          <a class="px-8 py-4 rounded-full bg-brand-accent text-brand-dark font-bold">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <a
+            class="px-8 py-4 rounded-full bg-brand-accent text-brand-dark font-bold"
+          >
             Get Consultation
           </a>
-          <a class="px-8 py-4 rounded-full border border-white/30">
+          <a
+            class="px-8 py-4 rounded-full border border-white/30"
+          >
             Explore Services
           </a>
         </div>
       </div>
 
       <!-- RIGHT -->
-      <div class="bg-slate-900/80 border border-white/10 rounded-3xl p-8 shadow-2xl max-w-md ml-auto">
-        <div class="h-32 flex items-center justify-center border border-white/5 rounded-xl mb-6">
+      <div
+        class="bg-slate-900/80 border border-white/10 rounded-3xl p-8 shadow-2xl
+               max-w-md mx-auto lg:ml-auto"
+      >
+        <div
+          class="h-32 flex items-center justify-center
+                 border border-white/5 rounded-xl mb-6"
+        >
           <p class="text-brand-accent font-mono">AI Analysis Running...</p>
         </div>
         <div class="flex justify-between pt-4 border-t border-white/10">
@@ -295,6 +324,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- 1.3 STATS SECTION -->
 <section class="py-16 bg-white relative z-20 -mt-8">
@@ -329,23 +359,20 @@
   <div class="container mx-auto px-6">
     <div class="max-w-4xl mx-auto text-center mb-14">
       <h2 class="text-3xl lg:text-4xl font-extrabold mb-4">
-        KHÁCH HÀNG & ĐỐI TÁC TIN DÙNG
+        CUSTOMERS & PARTNERS
       </h2>
       <p class="text-slate-300 leading-relaxed text-lg">
-        DPH đã nhanh chóng thích ứng với vai trò, nhiệm vụ và hoàn thành xuất sắc mọi yêu cầu của khách hàng.
-Chúng tôi luôn chủ động lắng nghe, phản hồi kịp thời và thể hiện năng lực quản lý dự án chuyên nghiệp.
-Với kinh nghiệm cung cấp dịch vụ đa quốc gia và đa lĩnh vực, DPH không chỉ đáp ứng mà còn vượt mong đợi của khách hàng trên toàn cầu.
-Đội ngũ của chúng tôi luôn duy trì quy trình làm việc hiệu quả, linh hoạt trong mọi trường hợp hợp tác, sẵn sàng hỗ trợ và dễ dàng tiếp cận bất cứ khi nào khách hàng cần.
+        DPH has quickly adapted to its role and responsibilities, successfully fulfilling all client requirements. We proactively listen, respond promptly, and demonstrate professional project management capabilities. With experience providing services internationally and across multiple sectors, DPH not only meets but exceeds the expectations of clients worldwide. Our team maintains efficient workflows, remains flexible in all collaborative situations, and is readily available and accessible whenever clients need support.
       </p>
     </div>
 
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-      <div class="bg-white rounded-xl p-6 flex justify-center"><img src="assets/images/seabank.PNG" class="h-16 object-contain" /></div>
-      <div class="bg-white rounded-xl p-6 flex justify-center"><img src="assets/images/lxt.JPG" class="h-16 object-contain" /></div>
-      <div class="bg-white rounded-xl p-6 flex justify-center"><img src="assets/images/scale.JPG" class="h-16 object-contain" /></div>
-      <div class="bg-white rounded-xl p-6 flex justify-center"><img src="assets/images/hyundai.PNG" class="h-16 object-contain" /></div>
-      <div class="bg-white rounded-xl p-6 flex justify-center"><img src="assets/images/infi.PNG" class="h-16 object-contain" /></div>
-      <div class="bg-white rounded-xl p-6 flex justify-center"><img src="assets/images/aimmo.PNG" class="h-16 object-contain" /></div>
+      <div class="bg-white rounded-xl p-6 flex justify-center"><img src="/assets/images/seabank.PNG" class="h-16 object-contain" /></div>
+      <div class="bg-white rounded-xl p-6 flex justify-center"><img src="/assets/images/lxt.JPG" class="h-16 object-contain" /></div>
+      <div class="bg-white rounded-xl p-6 flex justify-center"><img src="/assets/images/scale.JPG" class="h-16 object-contain" /></div>
+      <div class="bg-white rounded-xl p-6 flex justify-center"><img src="/assets/images/hyundai.PNG" class="h-16 object-contain" /></div>
+      <div class="bg-white rounded-xl p-6 flex justify-center"><img src="/assets/images/infi.PNG" class="h-16 object-contain" /></div>
+      <div class="bg-white rounded-xl p-6 flex justify-center"><img src="/assets/images/aimmo.PNG" class="h-16 object-contain" /></div>
     </div>
   </div>
 </section>
