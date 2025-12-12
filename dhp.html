@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DPH - Trusted Partner in Content Moderation & Data Services</title>
+    <link rel="icon" type="" href="/public/favicon.ico">
+    <meta
+      name="description"
+      content="DPH is a specialized partner in data, content moderation, and Trust & Safety services for digital platforms and global enterprises."
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom Config for Tailwind -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                dark: "#0f172a" /* Slate 900 */,
+                primary: "#1e40af" /* Blue 800 */,
+                accent: "#06b6d4" /* Cyan 500 */,
+                light: "#f8fafc" /* Slate 50 */,
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Custom Utilities */
+      .glass-nav {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+      }
+
+      .hero-bg {
+        background-image: linear-gradient(
+            rgba(15, 23, 42, 0.9),
+            rgba(15, 23, 42, 0.8)
+          ),
+          url("https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      /* Process Timeline Styles */
+      .timeline-line::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 2px;
+        background: #334155; /* Slate 700 */
+        transform: translateX(-50%);
+        z-index: 0;
+      }
+
+      /* Connector Line for Process */
+      .connector-line {
+        display: none; /* Hidden on mobile by default */
+      }
+
+      @media (min-width: 768px) {
+        .connector-line {
+          display: block;
+          position: absolute;
+          top: 50%;
+          width: 3rem; /* Length of the connector */
+          height: 2px;
+          background: #334155;
+          z-index: 1;
+        }
+        .right-item .connector-line {
+          left: -3rem;
+        }
+        .left-item .connector-line {
+          right: -3rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .timeline-line::before {
+          left: 2rem; /* Align line to the left on mobile */
+        }
+      }
+
+      /* --- LIQUID GLASS MENU ACTIVE STATE --- */
+      .nav-link {
+        position: relative;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .nav-link.active {
+        color: #1e40af; /* brand-primary */
+        font-weight: 700;
+        background: rgba(30, 64, 175, 0.08); /* Very light blue bg */
+        box-shadow: inset 0 0 0 1px rgba(30, 64, 175, 0.1),
+          /* Subtle inner border */ 0 4px 15px rgba(6, 182, 212, 0.15),
+          /* Soft outer glow */ inset 0 2px 5px rgba(255, 255, 255, 0.5); /* Inner highlight for glass effect */
+        backdrop-filter: blur(4px);
+      }
+
+      /* Small glowing dot for active state */
+      .nav-link.active::after {
+        content: "";
+        position: absolute;
+        bottom: 6px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 4px;
+        background-color: #06b6d4; /* brand-accent */
+        border-radius: 50%;
+        box-shadow: 0 0 8px 2px rgba(6, 182, 212, 0.6);
+      }
+    </style>
+  </head>
+  <body class="font-sans text-slate-700 antialiased bg-slate-50">
+<!-- HEADER / NAVIGATION -->
+<header
+  id="header"
+  class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-sm shadow-sm"
+  style="height: var(--header-height);"
+>
+  <div
+    class="container mx-auto px-6 h-full flex justify-between items-center"
+  >
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2">
+      <img
+        src="/public/dhp.jpg"
+        alt="DPH Logo"
+        class="h-12 w-auto object-contain"
+      />
+    </a>
+
+    <!-- Desktop Menu -->
+    <nav
+      class="hidden lg:flex items-center space-x-2 p-1 bg-slate-100/50 rounded-full border border-slate-200/50 backdrop-blur-md"
+    >
+      <a href="#home" class="nav-link px-5 py-2 rounded-full text-sm font-medium text-slate-600 hover:text-brand-primary">Home</a>
+      <a href="#about" class="nav-link px-5 py-2 rounded-full text-sm font-medium text-slate-600 hover:text-brand-primary">About</a>
+      <a href="#services" class="nav-link px-5 py-2 rounded-full text-sm font-medium text-slate-600 hover:text-brand-primary">Services</a>
+      <a href="#technology" class="nav-link px-5 py-2 rounded-full text-sm font-medium text-slate-600 hover:text-brand-primary">Technology</a>
+      <a href="#process" class="nav-link px-5 py-2 rounded-full text-sm font-medium text-slate-600 hover:text-brand-primary">Process</a>
+      <a href="#why-us" class="nav-link px-5 py-2 rounded-full text-sm font-medium text-slate-600 hover:text-brand-primary">Why Us</a>
+    </nav>
+
+    <!-- CTA -->
+    <div class="hidden lg:block">
+      <a
+        href="#contact"
+        class="bg-brand-primary hover:bg-blue-700 text-white px-6 py-2.5 rounded-full font-bold text-sm transition shadow-lg flex items-center gap-2"
+      >
+        Contact Us
+        <i class="fas fa-arrow-right text-xs"></i>
+      </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-btn"
+      class="lg:hidden text-slate-700 p-2 hover:bg-slate-100 rounded-lg"
+    >
+      <i class="fas fa-bars text-2xl"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden lg:hidden bg-white border-t border-gray-100 shadow-xl"
+  >
+    <div class="flex flex-col p-6 space-y-2 font-medium text-slate-600">
+      <a href="#home" class="hover:text-brand-primary">Home</a>
+      <a href="#about" class="hover:text-brand-primary">About</a>
+      <a href="#services" class="hover:text-brand-primary">Services</a>
+      <a href="#technology" class="hover:text-brand-primary">Technology</a>
+      <a href="#process" class="hover:text-brand-primary">Process</a>
+      <a href="#why-us" class="hover:text-brand-primary">Why Us</a>
+      <a href="#contact" class="text-brand-primary font-bold">Contact Us</a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO SECTION ================= -->
+<section
+  id="home"
+  class="relative hero-bg text-white"
+  style="
+    margin-top: var(--header-height);
+    min-height: calc(100svh - var(--header-height));
+    display: flex;
+    align-items: center;
+  "
+>
+  <!-- Overlay (KHÔNG absolute full height) -->
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="
+      background: linear-gradient(
+        to bottom,
+        rgba(15,23,42,0.3),
+        rgba(15,23,42,0.7),
+        rgba(15,23,42,1)
+      );
+    "
+  ></div>
+
+  <!-- Content -->
+  <div class="relative z-10 container mx-auto px-6 w-full py-20">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- LEFT -->
+      <div>
+        <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full 
+                    bg-brand-accent/10 border border-brand-accent/30 
+                    text-sm font-bold text-brand-accent mb-6">
+          <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+          TRUST & SAFETY SOLUTIONS
+        </div>
+
+        <h1 class="text-4xl lg:text-6xl font-extrabold leading-tight mb-6">
+          Trusted Partner in <br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-sky-400">
+            Content Moderation
+          </span>
+        </h1>
+
+        <p class="text-lg text-slate-300 mb-10 max-w-xl">
+          DPH provides specialized data services, content moderation, and
+          Trust & Safety solutions tailored for digital platforms and
+          global enterprises.
+        </p>
+
+        <div class="flex gap-4">
+          <a class="px-8 py-4 rounded-full bg-brand-accent text-brand-dark font-bold">
+            Get Consultation
+          </a>
+          <a class="px-8 py-4 rounded-full border border-white/30">
+            Explore Services
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="bg-slate-900/80 border border-white/10 rounded-3xl p-8 shadow-2xl max-w-md ml-auto">
+        <div class="h-32 flex items-center justify-center border border-white/5 rounded-xl mb-6">
+          <p class="text-brand-accent font-mono">AI Analysis Running...</p>
+        </div>
+        <div class="flex justify-between pt-4 border-t border-white/10">
+          <div>
+            <p class="text-slate-400 text-sm">Accuracy</p>
+            <p class="text-3xl font-bold">99.8%</p>
+          </div>
+          <div>
+            <p class="text-slate-400 text-sm">Status</p>
+            <p class="text-green-400 font-bold">Safe</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 1.3 STATS SECTION -->
+<section class="py-16 bg-white relative z-20 -mt-8">
+  <div class="container mx-auto px-6">
+    <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+      <div class="text-center group">
+        <div class="text-4xl font-extrabold text-brand-primary mb-2">&gt; 99%</div>
+        <div class="text-sm text-slate-500 font-medium">Accuracy Rate</div>
+      </div>
+      <div class="text-center group">
+        <div class="text-4xl font-extrabold text-brand-primary mb-2">&lt; 1%</div>
+        <div class="text-sm text-slate-500 font-medium">Error Margin</div>
+      </div>
+      <div class="text-center group">
+        <div class="text-4xl font-extrabold text-brand-primary mb-2">24/7</div>
+        <div class="text-sm text-slate-500 font-medium">Continuous Ops</div>
+      </div>
+      <div class="text-center group">
+        <div class="text-4xl font-extrabold text-brand-primary mb-2">500+</div>
+        <div class="text-sm text-slate-500 font-medium">Specialists</div>
+      </div>
+      <div class="text-center group">
+        <div class="text-4xl font-extrabold text-brand-primary mb-2">&lt; 2h</div>
+        <div class="text-sm text-slate-500 font-medium">Response Time</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS / PARTNERS SECTION -->
+<section id="clients" class="py-20 bg-slate-900 text-white">
+  <div class="container mx-auto px-6">
+    <div class="max-w-4xl mx-auto text-center mb-14">
+      <h2 class="text-3xl lg:text-4xl font-extrabold mb-4">
+        KHÁCH HÀNG & ĐỐI TÁC TIN DÙNG
+      </h2>
+      <p class="text-slate-300 leading-relaxed text-lg">
+        DPH đã nhanh chóng thích ứng với vai trò, nhiệm vụ và hoàn thành xuất sắc mọi yêu cầu của khách hàng.
+Chúng tôi luôn chủ động lắng nghe, phản hồi kịp thời và thể hiện năng lực quản lý dự án chuyên nghiệp.
+Với kinh nghiệm cung cấp dịch vụ đa quốc gia và đa lĩnh vực, DPH không chỉ đáp ứng mà còn vượt mong đợi của khách hàng trên toàn cầu.
+Đội ngũ của chúng tôi luôn duy trì quy trình làm việc hiệu quả, linh hoạt trong mọi trường hợp hợp tác, sẵn sàng hỗ trợ và dễ dàng tiếp cận bất cứ khi nào khách hàng cần.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+      <div class="bg-white rounded-xl p-6 flex justify-center"><img src="/public/seabank.PNG" class="h-16 object-contain" /></div>
+      <div class="bg-white rounded-xl p-6 flex justify-center"><img src="/public/lxt.JPG" class="h-16 object-contain" /></div>
+      <div class="bg-white rounded-xl p-6 flex justify-center"><img src="/public/scale.JPG" class="h-16 object-contain" /></div>
+      <div class="bg-white rounded-xl p-6 flex justify-center"><img src="/public/hyundai.PNG" class="h-16 object-contain" /></div>
+      <div class="bg-white rounded-xl p-6 flex justify-center"><img src="/public/infi.PNG" class="h-16 object-contain" /></div>
+      <div class="bg-white rounded-xl p-6 flex justify-center"><img src="/public/aimmo.PNG" class="h-16 object-contain" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. ABOUT US -->
+<section id="about" class="py-24 bg-slate-50">
+  <div class="container mx-auto px-6">
+
+    <!-- ROW 1: Image + Intro -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
+
+      <!-- Image -->
+      <div class="lg:col-span-5">
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+          <img
+            src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+            alt="DPH Team"
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute inset-0 bg-brand-primary/10"></div>
+        </div>
+      </div>
+
+      <!-- Intro -->
+      <div class="lg:col-span-7">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-brand-dark mb-6">
+          Who is DPH?
+        </h2>
+
+        <p class="text-slate-600 mb-5 leading-relaxed text-lg">
+          <strong>Data Processing Hub (DPH)</strong> is a data technology enterprise
+          with over <strong>6 years of experience</strong> in
+          <strong>Content Moderation</strong>, <strong>Trust & Safety</strong>,
+          and <strong>AI Data Services</strong>.
+        </p>
+
+        <p class="text-slate-600 mb-5 leading-relaxed">
+          At DPH, we are committed to building a safer and more responsible digital
+          ecosystem by combining <strong>large-scale operational expertise</strong>,
+          <strong>international BPO standards</strong>, and
+          <strong>advanced AI-assisted moderation technologies</strong>.
+          As digital platforms grow in complexity and volume, our role is to help
+          organizations maintain <strong>content safety, regulatory compliance,
+          and user trust</strong> at every touchpoint.
+        </p>
+
+        <p class="text-slate-600 leading-relaxed">
+          Our hybrid <strong>human-in-the-loop</strong> approach ensures that while AI
+          enhances speed, scalability, and consistency, human judgment remains central
+          in scenarios requiring nuance, empathy, and cultural understanding.
+        </p>
+      </div>
+    </div>
+
+<!-- Vision & Mission -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 items-stretch">
+
+  <!-- Vision -->
+  <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 h-full">
+    <div class="flex items-center gap-3 mb-4">
+      <div class="w-11 h-11 rounded-full bg-brand-primary/10 text-brand-primary flex items-center justify-center">
+        <i class="fas fa-eye"></i>
+      </div>
+      <h4 class="font-bold text-brand-dark text-lg">Our Vision</h4>
+    </div>
+    <p class="text-slate-600 leading-relaxed text-[15px]">
+      To become a leading global provider of Content Moderation, Trust & Safety,
+      and AI Data Services, empowering digital platforms to operate safely,
+      ethically, and sustainably in every market.
+    </p>
+  </div>
+
+  <!-- Mission -->
+  <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 h-full">
+    <div class="flex items-center gap-3 mb-4">
+      <div class="w-11 h-11 rounded-full bg-brand-primary/10 text-brand-primary flex items-center justify-center">
+        <i class="fas fa-shield-alt"></i>
+      </div>
+      <h4 class="font-bold text-brand-dark text-lg">Our Mission</h4>
+    </div>
+    <ul class="text-slate-600 leading-relaxed text-[15px] space-y-2 list-disc list-inside">
+      <li>Protect online communities from harmful, misleading, or unsafe content.</li>
+      <li>Support regulatory compliance and reduce operational risk.</li>
+      <li>Strengthen Trust & Safety capabilities through professional workflows.</li>
+      <li>Leverage AI innovation while maintaining a human-centered approach.</li>
+    </ul>
+  </div>
+
+</div>
+
+<section class="py-20 bg-slate-50">
+  <div class="container mx-auto px-6">
+
+    <!-- Core Values -->
+    <div class="bg-white rounded-2xl p-10 shadow-sm border border-slate-100 mb-16">
+      <h4 class="font-bold text-brand-dark text-xl mb-10 text-center">
+        Our Core Values
+      </h4>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="flex gap-4">
+          <div class="font-semibold text-brand-primary min-w-[140px]">Trust</div>
+          <div class="text-slate-600">Reliability and transparency in every decision and workflow.</div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="font-semibold text-brand-primary min-w-[140px]">Safety</div>
+          <div class="text-slate-600">Every action aims to reduce risk and protect communities.</div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="font-semibold text-brand-primary min-w-[140px]">Compliance</div>
+          <div class="text-slate-600">Alignment with global standards and local regulations.</div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="font-semibold text-brand-primary min-w-[140px]">Human-Centric</div>
+          <div class="text-slate-600">Human judgment remains essential where nuance matters.</div>
+        </div>
+
+        <div class="flex gap-4 md:col-span-2">
+          <div class="font-semibold text-brand-primary min-w-[140px]">Innovation</div>
+          <div class="text-slate-600 max-w-3xl">
+            Continuous improvement of processes, tools, and AI capabilities to stay ahead of evolving risks.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Compliance -->
+    <div class="bg-white rounded-2xl p-10 shadow-sm border border-slate-100">
+      <h4 class="font-bold text-brand-dark text-xl mb-4">
+        Compliance & Operational Standards
+      </h4>
+      <p class="text-slate-600 leading-relaxed max-w-4xl">
+        DPH adheres to internationally recognized security and operational frameworks,
+        applying strict data-protection measures, controlled access levels,
+        audit-ready workflows, and BPO-standard operating procedures.
+        Our infrastructure and internal policies ensure confidentiality, integrity,
+        and operational consistency across all projects and partners.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+  <!-- 3. SERVICES & CAPABILITIES -->
+<section id="services" class="py-20 bg-white">
+  <div class="container mx-auto px-6">
+
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-brand-primary font-bold uppercase tracking-wider text-sm">
+        Our Expertise
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mt-2">
+        Comprehensive Solutions
+      </h2>
+      <p class="text-slate-600 mt-4">
+        Ensuring platform safety and high-quality data for AI training.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+      <!-- Service 1: Content Moderation -->
+<div
+  class="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-brand-primary transition duration-300 shadow-lg group flex flex-col"
+>
+  <div class="flex items-center gap-4 mb-6">
+    <div
+      class="w-16 h-16 bg-brand-primary text-white rounded-2xl flex items-center justify-center text-3xl shadow-lg group-hover:rotate-6 transition"
+    >
+      <i class="fas fa-user-shield"></i>
+    </div>
+    <h3 class="text-2xl font-bold text-brand-dark">
+      Content Moderation <br />
+      & Trust & Safety
+    </h3>
+  </div>
+
+  <p class="text-slate-600 mb-8 leading-relaxed">
+    We operate specialized moderation teams and Trust & Safety systems
+    using a <strong>Hybrid Moderation (AI + Human)</strong> model to
+    filter violations and ensure platform health.
+  </p>
+
+  <!-- Capabilities -->
+  <div class="bg-white rounded-xl p-6 border border-slate-100 shadow-sm mb-8">
+    <h4 class="font-bold text-brand-dark mb-4 border-b border-slate-100 pb-2">
+      Key Capabilities:
+    </h4>
+    <ul class="space-y-3">
+      <li class="flex items-start gap-3">
+        <i class="fas fa-check-circle text-green-500 mt-1 text-lg"></i>
+        <span class="text-slate-700 text-sm">
+          <strong>Violation Filter:</strong> Fake news, hate speech, illegal content.
+        </span>
+      </li>
+      <li class="flex items-start gap-3">
+        <i class="fas fa-check-circle text-green-500 mt-1 text-lg"></i>
+        <span class="text-slate-700 text-sm">
+          <strong>User Reports:</strong> Handling reported content swiftly.
+        </span>
+      </li>
+      <li class="flex items-start gap-3">
+        <i class="fas fa-check-circle text-green-500 mt-1 text-lg"></i>
+        <span class="text-slate-700 text-sm">
+          <strong>Policy & Rulesets:</strong> Custom moderation guidelines.
+        </span>
+      </li>
+      <li class="flex items-start gap-3">
+        <i class="fas fa-check-circle text-green-500 mt-1 text-lg"></i>
+        <span class="text-slate-700 text-sm">
+          <strong>Hybrid Workflow:</strong> AI detection + Human review.
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- CTA -->
+  <div class="mt-auto">
+    <a
+      href="content-moderation.html"
+      class="inline-flex items-center gap-2
+             font-semibold text-brand-primary
+             transition-all duration-200
+             -mx-3 -my-2 px-3 py-2 rounded-lg
+             hover:bg-brand-primary hover:text-white hover:shadow-md"
+    >
+      See details
+      <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Service 2: AI Data Services -->
+<div
+  class="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-brand-accent transition duration-300 shadow-lg group flex flex-col"
+>
+  <div class="flex items-center gap-4 mb-6">
+    <div
+      class="w-16 h-16 bg-brand-accent text-white rounded-2xl flex items-center justify-center text-3xl shadow-lg group-hover:rotate-6 transition"
+    >
+      <i class="fas fa-database"></i>
+    </div>
+    <h3 class="text-2xl font-bold text-brand-dark">
+      AI Data Services <br />
+      & Annotation
+    </h3>
+  </div>
+
+  <p class="text-slate-600 mb-8 leading-relaxed">
+    Comprehensive data solutions tailored for AI training: collection,
+    processing, labeling, and rigorous quality control to support NLP
+    and Computer Vision models.
+  </p>
+
+  <!-- Capabilities -->
+  <div class="bg-white rounded-xl p-6 border border-slate-100 shadow-sm mb-8">
+    <h4 class="font-bold text-brand-dark mb-4 border-b border-slate-100 pb-2">
+      Data Capabilities:
+    </h4>
+    <ul class="space-y-3">
+      <li class="flex items-start gap-3">
+        <i class="fas fa-check text-green-500 font-bold mt-1"></i>
+        <div>
+          <strong class="text-slate-800 block text-sm">Data Collection:</strong>
+          <span class="text-slate-600 text-sm">Multi-format collection per project request.</span>
+        </div>
+      </li>
+      <li class="flex items-start gap-3">
+        <i class="fas fa-check text-green-500 font-bold mt-1"></i>
+        <div>
+          <strong class="text-slate-800 block text-sm">Data Annotation:</strong>
+          <span class="text-slate-600 text-sm">Labeling text, image, video, audio.</span>
+        </div>
+      </li>
+      <li class="flex items-start gap-3">
+        <i class="fas fa-check text-green-500 font-bold mt-1"></i>
+        <div>
+          <strong class="text-slate-800 block text-sm">Data Classification:</strong>
+          <span class="text-slate-600 text-sm">Categorizing content by criteria.</span>
+        </div>
+      </li>
+      <li class="flex items-start gap-3">
+        <i class="fas fa-check text-green-500 font-bold mt-1"></i>
+        <div>
+          <strong class="text-slate-800 block text-sm">AI Training Support:</strong>
+          <span class="text-slate-600 text-sm">Training and fine-tuning AI models.</span>
+        </div>
+      </li>
+      <li class="flex items-start gap-3">
+        <i class="fas fa-check text-green-500 font-bold mt-1"></i>
+        <div>
+          <strong class="text-slate-800 block text-sm">Quality Assurance:</strong>
+          <span class="text-slate-600 text-sm">
+            International standards (Kappa, SLA, QA sampling).
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- CTA -->
+  <div class="mt-auto">
+    <a
+      href="ai-data-services.html"
+      class="inline-flex items-center gap-2
+             font-semibold text-brand-accent
+             transition-all duration-200
+             -mx-3 -my-2 px-3 py-2 rounded-lg
+             hover:bg-brand-accent hover:text-white hover:shadow-md"
+    >
+      See details
+      <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
+    </a>
+  </div>
+</div>
+</section>
+    <!-- 4. TECHNOLOGY (Updated) -->
+    <section id="technology" class="py-20 bg-slate-50">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <span
+            class="text-brand-primary font-bold uppercase tracking-wider text-sm"
+            >Tech Stack</span
+          >
+          <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mt-2">
+            Technology Capabilities
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div class="order-2 md:order-1">
+            <h3
+              class="text-2xl font-bold text-brand-primary mb-4 flex items-center gap-3"
+            >
+              <i class="fas fa-robot text-brand-accent"></i>
+              Hybrid Moderation System
+            </h3>
+            <p class="text-slate-600 mb-6 text-lg">
+              AI acts as the first line of defense, while human experts handle
+              complex decisions, ensuring
+              <strong>speed, scale, and humanity</strong>.
+            </p>
+            <div class="grid grid-cols-2 gap-4">
+              <div
+                class="bg-white p-4 rounded-lg shadow-sm border border-slate-200 text-center"
+              >
+                <i class="fas fa-eye text-brand-accent text-2xl mb-2"></i>
+                <div class="font-bold text-sm">24/7 AI Scan</div>
+              </div>
+              <div
+                class="bg-white p-4 rounded-lg shadow-sm border border-slate-200 text-center"
+              >
+                <i class="fas fa-tasks text-brand-primary text-2xl mb-2"></i>
+                <div class="font-bold text-sm">Smart Dispatch</div>
+              </div>
+              <div
+                class="bg-white p-4 rounded-lg shadow-sm border border-slate-200 text-center"
+              >
+                <i class="fas fa-chart-pie text-purple-500 text-2xl mb-2"></i>
+                <div class="font-bold text-sm">Real-time Analytics</div>
+              </div>
+              <div
+                class="bg-white p-4 rounded-lg shadow-sm border border-slate-200 text-center"
+              >
+                <i class="fas fa-lock text-green-500 text-2xl mb-2"></i>
+                <div class="font-bold text-sm">High Security</div>
+              </div>
+            </div>
+          </div>
+          <div class="order-1 md:order-2">
+            <img
+              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Hybrid Tech"
+              class="rounded-2xl shadow-2xl"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. OPERATIONAL PROCESS (RE-DESIGNED ZIG-ZAG) -->
+    <section id="process" class="py-24 bg-slate-900 text-white overflow-hidden">
+      <div class="container mx-auto px-6 relative">
+        <div class="text-center mb-20">
+          <span
+            class="text-brand-accent font-bold uppercase tracking-wider text-sm"
+            >Workflow</span
+          >
+          <h2 class="text-3xl md:text-4xl font-bold mt-2">
+            Operational Process
+          </h2>
+          <p class="text-slate-400 mt-4 max-w-2xl mx-auto">
+            Streamlined 5-step workflow optimized for efficiency, transparency,
+            and quality.
+          </p>
+        </div>
+
+        <!-- Timeline Container -->
+        <div class="relative max-w-5xl mx-auto">
+          <!-- Vertical Line (Desktop Center / Mobile Left) -->
+          <div class="timeline-line absolute h-full"></div>
+
+          <!-- Step 1 -->
+          <div
+            class="relative flex flex-col md:flex-row items-center justify-between mb-16 md:mb-24 w-full group"
+          >
+            <!-- Left: Text -->
+            <div
+              class="md:w-5/12 text-center md:text-right pl-12 md:pl-0 md:pr-12 left-item relative"
+            >
+              <!-- Connector -->
+              <div class="connector-line"></div>
+
+              <h3 class="text-xl font-bold text-brand-accent mb-2">
+                1. Survey & Analysis
+              </h3>
+              <p
+                class="text-sm text-slate-300 leading-relaxed bg-slate-800/50 p-4 rounded-xl border border-slate-700/50"
+              >
+                Understand content type, risk level, legal requirements, and
+                volume to tailor the solution.
+              </p>
+            </div>
+
+            <!-- Center: Number Circle -->
+            <div
+              class="absolute left-2 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 bg-slate-900 border-2 border-brand-accent text-brand-accent rounded-full flex items-center justify-center font-bold text-lg shadow-[0_0_20px_rgba(6,182,212,0.5)] z-10 group-hover:bg-brand-accent group-hover:text-slate-900 transition duration-300"
+            >
+              1
+            </div>
+
+            <!-- Right: Empty for balance -->
+            <div class="md:w-5/12 hidden md:block"></div>
+          </div>
+
+          <!-- Step 2 -->
+          <div
+            class="relative flex flex-col md:flex-row items-center justify-between mb-16 md:mb-24 w-full group"
+          >
+            <div class="md:w-5/12 hidden md:block"></div>
+
+            <div
+              class="absolute left-2 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 bg-slate-900 border-2 border-brand-accent text-brand-accent rounded-full flex items-center justify-center font-bold text-lg shadow-[0_0_20px_rgba(6,182,212,0.5)] z-10 group-hover:bg-brand-accent group-hover:text-slate-900 transition duration-300"
+            >
+              2
+            </div>
+
+            <!-- Right: Text -->
+            <div
+              class="md:w-5/12 text-center md:text-left pl-12 md:pl-12 right-item relative"
+            >
+              <!-- Connector -->
+              <div class="connector-line"></div>
+
+              <h3 class="text-xl font-bold text-brand-accent mb-2">
+                2. Policy & Workflow
+              </h3>
+              <p
+                class="text-sm text-slate-300 leading-relaxed bg-slate-800/50 p-4 rounded-xl border border-slate-700/50"
+              >
+                Standardize rulesets. Build workflow: Receive &gt; AI Filter
+                &gt; Human &gt; QA &gt; Report.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div
+            class="relative flex flex-col md:flex-row items-center justify-between mb-16 md:mb-24 w-full group"
+          >
+            <div
+              class="md:w-5/12 text-center md:text-right pl-12 md:pl-0 md:pr-12 left-item relative"
+            >
+              <div class="connector-line"></div>
+              <h3 class="text-xl font-bold text-brand-accent mb-2">
+                3. System & Team Setup
+              </h3>
+              <p
+                class="text-sm text-slate-300 leading-relaxed bg-slate-800/50 p-4 rounded-xl border border-slate-700/50"
+              >
+                API Integration. Recruit & train specialized team. Set KPIs &
+                SLAs for the project.
+              </p>
+            </div>
+
+            <div
+              class="absolute left-2 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 bg-slate-900 border-2 border-brand-accent text-brand-accent rounded-full flex items-center justify-center font-bold text-lg shadow-[0_0_20px_rgba(6,182,212,0.5)] z-10 group-hover:bg-brand-accent group-hover:text-slate-900 transition duration-300"
+            >
+              3
+            </div>
+
+            <div class="md:w-5/12 hidden md:block"></div>
+          </div>
+
+          <!-- Step 4 -->
+          <div
+            class="relative flex flex-col md:flex-row items-center justify-between mb-16 md:mb-24 w-full group"
+          >
+            <div class="md:w-5/12 hidden md:block"></div>
+
+            <div
+              class="absolute left-2 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 bg-slate-900 border-2 border-brand-accent text-brand-accent rounded-full flex items-center justify-center font-bold text-lg shadow-[0_0_20px_rgba(6,182,212,0.5)] z-10 group-hover:bg-brand-accent group-hover:text-slate-900 transition duration-300"
+            >
+              4
+            </div>
+
+            <div
+              class="md:w-5/12 text-center md:text-left pl-12 md:pl-12 right-item relative"
+            >
+              <div class="connector-line"></div>
+              <h3 class="text-xl font-bold text-brand-accent mb-2">
+                4. Operation & QA
+              </h3>
+              <p
+                class="text-sm text-slate-300 leading-relaxed bg-slate-800/50 p-4 rounded-xl border border-slate-700/50"
+              >
+                24/7 Operation. Random & Periodic QA checks to ensure quality
+                and consistency.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div
+            class="relative flex flex-col md:flex-row items-center justify-between w-full group"
+          >
+            <div
+              class="md:w-5/12 text-center md:text-right pl-12 md:pl-0 md:pr-12 left-item relative"
+            >
+              <div class="connector-line"></div>
+              <h3 class="text-xl font-bold text-brand-accent mb-2">
+                5. Report & Improvement
+              </h3>
+              <p
+                class="text-sm text-slate-300 leading-relaxed bg-slate-800/50 p-4 rounded-xl border border-slate-700/50"
+              >
+                Statistical reports. Trend evaluation. Use feedback to retrain
+                and improve AI models.
+              </p>
+            </div>
+
+            <div
+              class="absolute left-2 md:left-1/2 transform md:-translate-x-1/2 w-12 h-12 bg-slate-900 border-2 border-brand-accent text-brand-accent rounded-full flex items-center justify-center font-bold text-lg shadow-[0_0_20px_rgba(6,182,212,0.5)] z-10 group-hover:bg-brand-accent group-hover:text-slate-900 transition duration-300"
+            >
+              5
+            </div>
+
+            <div class="md:w-5/12 hidden md:block"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. WHY CHOOSE US (UPDATED CARDS) -->
+    <section id="why-us" class="py-20 bg-slate-50">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <span
+            class="text-brand-primary font-bold uppercase tracking-wider text-sm"
+            >DPH Advantages</span
+          >
+          <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mt-2">
+            Why Choose DPH?
+          </h2>
+        </div>
+
+        <!-- Card Grid - 3 Columns on Desktop -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Card 1 -->
+          <div
+            class="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-brand-primary card-hover h-full flex flex-col items-start"
+          >
+            <div
+              class="w-12 h-12 rounded-lg bg-blue-50 text-brand-primary flex items-center justify-center text-2xl mb-6"
+            >
+              <i class="fas fa-globe"></i>
+            </div>
+            <h4 class="font-bold text-xl text-brand-dark mb-3">
+              International Standards
+            </h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Applying robust BPO standards used by major global corporations to
+              ensure quality consistency.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div
+            class="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-brand-accent card-hover h-full flex flex-col items-start"
+          >
+            <div
+              class="w-12 h-12 rounded-lg bg-cyan-50 text-brand-accent flex items-center justify-center text-2xl mb-6"
+            >
+              <i class="fas fa-users"></i>
+            </div>
+            <h4 class="font-bold text-xl text-brand-dark mb-3">
+              Scalable (500+ Staff)
+            </h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Large specialized workforce ready to expand rapidly upon project
+              request to meet high volume.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+            class="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-brand-primary card-hover h-full flex flex-col items-start"
+          >
+            <div
+              class="w-12 h-12 rounded-lg bg-blue-50 text-brand-primary flex items-center justify-center text-2xl mb-6"
+            >
+              <i class="fas fa-microchip"></i>
+            </div>
+            <h4 class="font-bold text-xl text-brand-dark mb-3">
+              Hybrid Moderation
+            </h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              AI + Human combination: Optimizing processing speed while ensuring
+              high accuracy and context.
+            </p>
+          </div>
+
+          <!-- Card 4 -->
+          <div
+            class="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-brand-accent card-hover h-full flex flex-col items-start"
+          >
+            <div
+              class="w-12 h-12 rounded-lg bg-cyan-50 text-brand-accent flex items-center justify-center text-2xl mb-6"
+            >
+              <i class="fas fa-magnifying-glass-chart"></i>
+            </div>
+            <h4 class="font-bold text-xl text-brand-dark mb-3">
+              Multi-layer QA
+            </h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Rigorous quality control with tracking SLA, error rates, and
+              continuous quality assessment.
+            </p>
+          </div>
+
+          <!-- Card 5 -->
+          <div
+            class="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-brand-primary card-hover h-full flex flex-col items-start"
+          >
+            <div
+              class="w-12 h-12 rounded-lg bg-blue-50 text-brand-primary flex items-center justify-center text-2xl mb-6"
+            >
+              <i class="fas fa-sliders"></i>
+            </div>
+            <h4 class="font-bold text-xl text-brand-dark mb-3">
+              Flexible & Customizable
+            </h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Workflows, rulesets, and guidelines can be fully adjusted to fit
+              specific markets and needs.
+            </p>
+          </div>
+
+          <!-- Card 6 (Added for Symmetry if needed, or keep blank) -->
+          <div
+            class="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-brand-accent card-hover h-full flex flex-col items-start"
+          >
+            <div
+              class="w-12 h-12 rounded-lg bg-cyan-50 text-brand-accent flex items-center justify-center text-2xl mb-6"
+            >
+              <i class="fas fa-headset"></i>
+            </div>
+            <h4 class="font-bold text-xl text-brand-dark mb-3">24/7 Support</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Operating continuously including holidays to ensure zero downtime
+              for your platform.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. CAREERS -->
+    <section
+      id="careers"
+      class="py-24 bg-gradient-to-r from-brand-dark to-slate-900 text-white relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"
+      ></div>
+
+      <div class="container mx-auto px-6 relative z-10 text-center">
+        <h2 class="text-4xl font-extrabold mb-6">Build Your Career With DPH</h2>
+        <p class="max-w-2xl mx-auto text-lg text-slate-300 mb-12">
+          Join a professional, transparent environment where you develop skills
+          and contribute to global AI data & safety solutions.
+        </p>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 text-left max-w-6xl mx-auto"
+        >
+          <div
+            class="bg-white/5 backdrop-blur p-6 rounded-xl border border-white/10 hover:bg-white/10 transition group cursor-pointer"
+          >
+            <div
+              class="w-10 h-10 rounded bg-brand-accent/20 text-brand-accent flex items-center justify-center mb-4"
+            >
+              <i class="fas fa-user-check"></i>
+            </div>
+            <h4
+              class="font-bold text-lg text-white group-hover:text-brand-accent transition"
+            >
+              Content Moderator
+            </h4>
+            <p class="text-sm text-slate-400 mt-2">
+              Reviewing user-generated content (UGC).
+            </p>
+            <div class="mt-4 text-xs text-brand-accent font-bold uppercase">
+              Full-time / Shift
+            </div>
+          </div>
+          <div
+            class="bg-white/5 backdrop-blur p-6 rounded-xl border border-white/10 hover:bg-white/10 transition group cursor-pointer"
+          >
+            <div
+              class="w-10 h-10 rounded bg-purple-500/20 text-purple-400 flex items-center justify-center mb-4"
+            >
+              <i class="fas fa-clipboard-check"></i>
+            </div>
+            <h4
+              class="font-bold text-lg text-white group-hover:text-purple-400 transition"
+            >
+              QA Specialist
+            </h4>
+            <p class="text-sm text-slate-400 mt-2">
+              Ensuring quality standards and SLA.
+            </p>
+            <div class="mt-4 text-xs text-purple-400 font-bold uppercase">
+              Quality Assurance
+            </div>
+          </div>
+          <div
+            class="bg-white/5 backdrop-blur p-6 rounded-xl border border-white/10 hover:bg-white/10 transition group cursor-pointer"
+          >
+            <div
+              class="w-10 h-10 rounded bg-green-500/20 text-green-400 flex items-center justify-center mb-4"
+            >
+              <i class="fas fa-tag"></i>
+            </div>
+            <h4
+              class="font-bold text-lg text-white group-hover:text-green-400 transition"
+            >
+              Data Specialist
+            </h4>
+            <p class="text-sm text-slate-400 mt-2">
+              Data labeling for AI training.
+            </p>
+            <div class="mt-4 text-xs text-green-400 font-bold uppercase">
+              Analyst / Labeling
+            </div>
+          </div>
+          <div
+            class="bg-white/5 backdrop-blur p-6 rounded-xl border border-white/10 hover:bg-white/10 transition group cursor-pointer"
+          >
+            <div
+              class="w-10 h-10 rounded bg-orange-500/20 text-orange-400 flex items-center justify-center mb-4"
+            >
+              <i class="fas fa-tasks"></i>
+            </div>
+            <h4
+              class="font-bold text-lg text-white group-hover:text-orange-400 transition"
+            >
+              Project Exec
+            </h4>
+            <p class="text-sm text-slate-400 mt-2">
+              Managing project operations.
+            </p>
+            <div class="mt-4 text-xs text-orange-400 font-bold uppercase">
+              Operations
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <button
+            class="bg-brand-accent hover:bg-cyan-600 text-white px-8 py-3 rounded-full font-bold transition shadow-lg hover:shadow-cyan-500/30"
+          >
+            View All Openings
+          </button>
+          <button
+            class="bg-transparent border border-slate-500 hover:bg-white hover:text-brand-dark text-white px-8 py-3 rounded-full font-bold transition"
+          >
+            Email: hr@dph.com
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. CONTACT -->
+    <section id="contact" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <div
+          class="bg-slate-50 rounded-3xl overflow-hidden shadow-xl flex flex-col lg:flex-row"
+        >
+          <!-- Info -->
+          <div
+            class="lg:w-5/12 bg-brand-primary p-12 text-white flex flex-col justify-between relative overflow-hidden"
+          >
+            <div
+              class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-16 -mt-16 blur-2xl"
+            ></div>
+            <div
+              class="absolute bottom-0 left-0 w-40 h-40 bg-brand-accent/20 rounded-full -ml-10 -mb-10 blur-2xl"
+            ></div>
+
+            <div class="relative z-10">
+              <h2 class="text-3xl font-bold mb-6">Connect with DPH</h2>
+              <p class="text-blue-100 mb-12 leading-relaxed">
+                Ready to optimize your content moderation and AI data processes?
+                We are here to help with tailored solutions.
+              </p>
+
+              <div class="space-y-8">
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center text-xl backdrop-blur-sm"
+                  >
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-bold text-lg">Email</h5>
+                    <p class="text-blue-100 text-sm">contact@dph-tech.com</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center text-xl backdrop-blur-sm"
+                  >
+                    <i class="fas fa-phone"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-bold text-lg">Hotline</h5>
+                    <p class="text-blue-100 text-sm">(+84) 999 888 777</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center text-xl backdrop-blur-sm"
+                  >
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-bold text-lg">Headquarters</h5>
+                    <p class="text-blue-100 text-sm">Hanoi, Vietnam</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-12 relative z-10">
+              <div class="flex gap-4 text-2xl">
+                <a href="#" class="hover:text-brand-accent transition"
+                  ><i class="fab fa-linkedin"></i
+                ></a>
+                <a href="#" class="hover:text-brand-accent transition"
+                  ><i class="fab fa-facebook-square"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <div class="lg:w-7/12 p-12">
+            <form>
+              <h3 class="text-2xl font-bold text-brand-dark mb-8">
+                Send us a message
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label
+                    class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2"
+                    >Full Name</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full p-4 rounded-lg bg-white border border-slate-200 focus:outline-none focus:border-brand-primary focus:ring-2 focus:ring-blue-100 transition"
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2"
+                    >Organization</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full p-4 rounded-lg bg-white border border-slate-200 focus:outline-none focus:border-brand-primary focus:ring-2 focus:ring-blue-100 transition"
+                    placeholder="Company Ltd."
+                  />
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label
+                    class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    class="w-full p-4 rounded-lg bg-white border border-slate-200 focus:outline-none focus:border-brand-primary focus:ring-2 focus:ring-blue-100 transition"
+                    placeholder="email@example.com"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2"
+                    >Phone</label
+                  >
+                  <input
+                    type="tel"
+                    class="w-full p-4 rounded-lg bg-white border border-slate-200 focus:outline-none focus:border-brand-primary focus:ring-2 focus:ring-blue-100 transition"
+                    placeholder="+84..."
+                  />
+                </div>
+              </div>
+              <div class="mb-6">
+                <label
+                  class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2"
+                  >Service Needed</label
+                >
+                <select
+                  class="w-full p-4 rounded-lg bg-white border border-slate-200 focus:outline-none focus:border-brand-primary focus:ring-2 focus:ring-blue-100 transition cursor-pointer"
+                >
+                  <option>Content Moderation</option>
+                  <option>Trust & Safety Solutions</option>
+                  <option>Data Labeling / AI Data Services</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="mb-8">
+                <label
+                  class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2"
+                  >Message</label
+                >
+                <textarea
+                  class="w-full p-4 rounded-lg bg-white border border-slate-200 focus:outline-none focus:border-brand-primary focus:ring-2 focus:ring-blue-100 transition h-32 resize-none"
+                  placeholder="Tell us about your project needs..."
+                ></textarea>
+              </div>
+              <button
+                type="button"
+                class="w-full bg-brand-primary hover:bg-blue-800 text-white font-bold py-4 rounded-lg transition shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              >
+                Submit Request
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer
+      class="bg-brand-dark text-slate-400 py-12 border-t border-slate-800 text-sm"
+    >
+      <div class="container mx-auto px-6">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center mb-8"
+        >
+          <div class="flex space-x-6">
+            <a href="#" class="hover:text-white transition">Privacy Policy</a>
+            <a href="#" class="hover:text-white transition">Terms of Service</a>
+            <a href="#" class="hover:text-white transition">Cookie Policy</a>
+          </div>
+        </div>
+        <div
+          class="border-t border-slate-800 pt-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center"
+        >
+          <p>&copy; 2023 DPH Technology. All rights reserved.</p>
+          <p class="mt-2 md:mt-0">Designed for Trust & Safety.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Script for Interactions -->
+    <script>
+      // Mobile Menu Toggle
+      const btn = document.getElementById("mobile-menu-btn");
+      const menu = document.getElementById("mobile-menu");
+      const header = document.getElementById("header");
+      const navLinks = document.querySelectorAll(".nav-link");
+      const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+      const sections = document.querySelectorAll("section");
+
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+
+      // Scroll Effect for Header
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 20) {
+          header.classList.add("glass-nav");
+          header.classList.remove("shadow-sm");
+        } else {
+          header.classList.remove("glass-nav");
+          header.classList.add("shadow-sm");
+        }
+      });
+
+      // Scroll Spy Logic (Active State Highlight)
+      function onScroll() {
+        let currentSection = "";
+
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+
+          // Check if current scroll position is within this section (with -100 offset for header)
+          if (window.scrollY >= sectionTop - 150) {
+            currentSection = section.getAttribute("id");
+          }
+        });
+
+        // Update Desktop Links
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href").includes(currentSection)) {
+            link.classList.add("active");
+          }
+        });
+
+        // Update Mobile Links
+        mobileNavLinks.forEach((link) => {
+          link.classList.remove(
+            "text-brand-primary",
+            "bg-slate-50",
+            "font-bold"
+          );
+          if (link.getAttribute("href").includes(currentSection)) {
+            link.classList.add(
+              "text-brand-primary",
+              "bg-slate-50",
+              "font-bold"
+            );
+          }
+        });
+      }
+
+      // Listen to scroll
+      window.addEventListener("scroll", onScroll);
+    </script>
+  </body>
+</html>
